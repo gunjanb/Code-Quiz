@@ -21,21 +21,36 @@
         alt="Logo for Javascript"
       />
       <a class="high-score" href="highscore.html">View HighScores</a>
-      <h1 class="timer">Timer</h1>
+      <h1 class="timer">Timer<span id="timeLeft"></span></h1>
     </header>
 
-    <!-- Main have one section each for About, work, Resume and Contact  and a oneliner container-->
+    <!-- Main have one section each for quiz startpage, question ans display  and userinfo-->
     <main>
       <!-- quiz main page add h2 and para -->
-      <section class="quiz-start-page"></section>
+
+      <section class="quiz-start-content">
+        <div class="wrapper">
+          <h2>Code Quiz</h2>
+          <p>
+            Lets play this timed quiz and know how strong your Javascript is
+            !!!!
+          </p>
+          <p>Make sure to answer all questions in given time.</p>
+          <p>
+            For every wrong answer 10 secs will be subtracted from the clock.
+          </p>
+          <button id="start-quiz">Star Quiz</button>
+        </div>
+      </section>
 
       <!-- div in which questions will be displayed  h2 and ol for answers and  line h3 correct  answer-->
+
       <section class="question-answer-display"></section>
 
       <!-- div in which Alldone + ur score + sumit ur score + when submit got to HS page -->
       <section class="user-info">
         <form id="form" class="score-form">
-          <h1>All Done!</h1>
+          <h2>All Done!</h2>
           <p>Your final score is <span id="final-score"></span></p>
           <label id="initial">Enter initial:</label>
           <input
