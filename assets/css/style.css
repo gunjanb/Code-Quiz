@@ -1,0 +1,49 @@
+:root {
+  --c--black: #000000;
+  --c--bgreen: #d8f3dc;
+  --c--offwhite: #edf0f1;
+  --c--dgreen: #6ca342;
+  --c--lgreen: #ddf5cb;
+  --c--gblack: #333333;
+  --c--yellow: #ffd82b;
+}
+
+/* body as flex container */
+body {
+  /* display: flex;
+    flex-direction: column; */
+  background-color: var(--c--bgreen);
+  line-height: 2rem;
+}
+
+/* >>>>>>>>>>>>>> header >>>>>>>>>>>>>>>>>  */
+/* main header */
+header {
+  display: flex;
+  background-color: var(--c--black);
+  color: var(--c--offwhite);
+  justify-content: space-between;
+  align-items: center;
+  padding: 1%;
+}
+
+h1 {
+  font-size: 200%;
+}
+
+/* namelogo width and height and adding transition property to it for rotation */
+.logo {
+  width: 5rem;
+  height: 5rem;
+  transition: all 5s ease 0s;
+}
+
+a {
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  font-size: 200%;
+  color: var(--c--offwhite);
+  text-decoration: none;
+  margin-right: auto;
+  padding: 1%;
+}
