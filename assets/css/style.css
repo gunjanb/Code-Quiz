@@ -47,3 +47,48 @@ a {
   margin-right: auto;
   padding: 1%;
 }
+
+main {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+h2 {
+  font-size: 190%;
+}
+
+.quiz-start-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10rem;
+}
+
+.wrapper {
+  line-height: 2.5rem;
+}
+.user-info {
+  /* display: flex;
+  flex: 1 1; */
+  margin-top: 10rem;
+}
+
+button {
+  padding: 1rem;
+  border-radius: 5%;
+  margin-top: 1.5rem;
+  cursor: pointer;
+  transition: all 0.5s ease-in-out;
+  background-color: rgb(185, 182, 182);
+}
+
+button:hover {
+  background-color: var(--c--dgreen);
+}
+
+#sign-up {
+  padding: 0.5rem;
+}
