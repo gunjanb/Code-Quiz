@@ -2,6 +2,9 @@ var starQuizButtonEl = document.querySelector("#start-quiz");
 var userInfoSectionEl = document.querySelector(".user-info");
 var startContentEl = document.querySelector(".quiz-start-content");
 var timerEl = document.querySelector("#timer");
+var questionAnswerDisplayEl = document.querySelector(
+  ".question-answer-display"
+);
 userInfoSectionEl.setAttribute("style", "display: none");
 var questionNumber = 0;
 var timeInterval;
@@ -100,19 +103,39 @@ function startTimer() {
 }
 
 function displayQuestionAnswer() {
+  //if user has just started the quiz  then : Remove the start-content and start timer
   if (questionNumber === 0) {
     startContentEl.remove();
     startTimer();
   }
-  //   if (questionNumber)
-  //     var questionAnswerDisplayEl = document.createElement("div");
-  //   // Create ordered list element
-  //   var listEl = document.createElement("ol");
-  //   // Create ordered list items
-  //   var li1 = document.createElement("li");
-  //   var li2 = document.createElement("li");
-  //   var li3 = document.createElement("li");
-  //   var li4 = document.createElement("li");
+
+  // start to display question
+  if (questionNumber < questionCollection.length) {
+    //add question
+    var questionEl = document.createElement("p");
+    questionEl.textContent = questionCollection[questionNumber].question;
+    // Create ordered list element
+    var listEl = document.createElement("ul");
+    // Create ordered list items
+    var li1 = document.createElement("li");
+    var li2 = document.createElement("li");
+    var li3 = document.createElement("li");
+    var li4 = document.createElement("li");
+
+    li1.textContent = questionCollection[questionNumber].options[0];
+    li2.textContent = questionCollection[questionNumber].options[1];
+    li3.textContent = questionCollection[questionNumber].options[2];
+    li4.textContent = questionCollection[questionNumber].options[3];
+
+    listEl.appendChild(li1);
+    listEl.appendChild(li2);
+    listEl.appendChild(li3);
+    listEl.appendChild(li4);
+    questionAnswerDisplayEl.appendChild(questionEl);
+    questionAnswerDisplayEl.appendChild(listEl);
+
+    questionNumber++;
+  }
 }
 
 starQuizButtonEl.addEventListener("click", function () {
