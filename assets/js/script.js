@@ -102,6 +102,20 @@ function startTimer() {
   }, 1000);
 }
 
+function checkUserInput() {
+  // create a horizontal line
+  var horizontalLineEl = document.createElement("hr");
+  //option button textcontext
+  if (this.textContent === questionCollection[questionNumber].answer) {
+    // console.log("answer right");
+    questionAnswerDisplayEl.lastChild.appendChild(horizontalLineEl);
+    horizontalLineEl.setAttribute(
+      "style",
+      "height: 50px;  background: url(../images/horizontalline.png) no-repeat center;    border: none;"
+    );
+  }
+}
+
 function displayQuestionAnswer() {
   //if user has just started the quiz  then : Remove the start-content and start timer
   if (questionNumber === 0) {
@@ -122,19 +136,51 @@ function displayQuestionAnswer() {
     var li3 = document.createElement("li");
     var li4 = document.createElement("li");
 
-    li1.textContent = questionCollection[questionNumber].options[0];
-    li2.textContent = questionCollection[questionNumber].options[1];
-    li3.textContent = questionCollection[questionNumber].options[2];
-    li4.textContent = questionCollection[questionNumber].options[3];
+    //create button
+    btnOption1El = document.createElement("button");
+    btnOption2El = document.createElement("button");
+    btnOption3El = document.createElement("button");
+    btnOption4El = document.createElement("button");
 
+    //adding que options to button
+    btnOption1El.textContent = questionCollection[questionNumber].options[0];
+    btnOption2El.textContent = questionCollection[questionNumber].options[1];
+    btnOption3El.textContent = questionCollection[questionNumber].options[2];
+    btnOption4El.textContent = questionCollection[questionNumber].options[3];
+
+    // li1.textContent = questionCollection[questionNumber].options[0];
+    // li2.textContent = questionCollection[questionNumber].options[1];
+    // li3.textContent = questionCollection[questionNumber].options[2];
+    // li4.textContent = questionCollection[questionNumber].options[3];
+
+    //adding btn to a link
+    li1.appendChild(btnOption1El);
+    li2.appendChild(btnOption2El);
+    li3.appendChild(btnOption3El);
+    li4.appendChild(btnOption4El);
+
+    //adding link to unordered list
     listEl.appendChild(li1);
     listEl.appendChild(li2);
     listEl.appendChild(li3);
     listEl.appendChild(li4);
+
+    //appending que and ans to section
     questionAnswerDisplayEl.appendChild(questionEl);
     questionAnswerDisplayEl.appendChild(listEl);
 
-    questionNumber++;
+    questionAnswerDisplayEl.setAttribute("style", "margin-top:5rem");
+    questionEl.setAttribute(
+      "style",
+      "font-weight:bold; font-size:1.5rem;  font-family:Arial, Helvetica, sans-serif;"
+    );
+
+    btnOption1El.addEventListener("click", checkUserInput);
+    btnOption2El.addEventListener("click", checkUserInput);
+    btnOption3El.addEventListener("click", checkUserInput);
+    btnOption4El.addEventListener("click", checkUserInput);
+
+    //questionNumber++;
   }
 }
 
