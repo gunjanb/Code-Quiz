@@ -35,7 +35,6 @@ h1 {
 .logo {
   width: 5rem;
   height: 5rem;
-  transition: all 5s ease 0s;
 }
 
 .high-score {
@@ -46,6 +45,7 @@ h1 {
   text-decoration: none;
   margin-right: auto;
   padding: 1%;
+  font-family: ;
 }
 
 main {
@@ -57,14 +57,14 @@ main {
 }
 
 h2 {
-  font-size: 190%;
+  font-size: 3rem;
 }
 
 .quiz-start-content {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 10rem;
+  margin: 10rem 2rem;
 }
 
 .wrapper {
@@ -76,24 +76,35 @@ h2 {
   margin-top: 10rem;
 }
 
+button,
 #sign-up,
 #start-quiz {
-  padding: 1rem;
-  border-radius: 5%;
+  padding: 2%;
+  border-radius: 1.875rem;
   margin-top: 1.5rem;
   cursor: pointer;
   transition: all 0.5s ease-in-out;
   background-color: rgb(185, 182, 182);
+  font-size: 1.3rem;
+  background: url(../images/horizontalline.png);
 }
 
+button:hover {
+  background-color: var(--c--dgreen);
+}
 button:hover,
 .clear:hover,
-.go-back {
+.go-back:hover,
+#start-quiz:hover {
   background-color: var(--c--dgreen);
 }
 
 #sign-up {
   padding: 0.2rem;
+}
+
+#start-quiz {
+  padding: 4%;
 }
 
 .show-highscore {
@@ -121,6 +132,19 @@ button:hover,
   font-size: 1rem;
 }
 
+.queAnsDisplay {
+  display: flex;
+  flex: wrap;
+  justify-content: center;
+}
+
+.question-answer-display {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 10rem 2rem;
+}
 /* #high-scorelist {
   display: flex;
   width: 100%;
