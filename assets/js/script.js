@@ -1,8 +1,11 @@
 var starQuizButtonEl = document.querySelector("#start-quiz");
 var userInfoSectionEl = document.querySelector(".user-info");
 var startContentEl = document.querySelector(".quiz-start-content");
+var timerEl = document.querySelector("#timer");
 userInfoSectionEl.setAttribute("style", "display: none");
 var questionNumber = 0;
+var timeInterval;
+var timeLeft = 120;
 
 //questions in array of object
 var questionCollection = [
@@ -84,9 +87,22 @@ var questionCollection = [
   },
 ];
 
+//to set a timer for every 1sec so this function will be excuted every 1sec
+function startTimer() {
+  timeInterval = setInterval(function () {
+    timeLeft--;
+    timerEl.textContent = ":" + timeLeft;
+
+    if (timeLeft === 0) {
+      clearInterval(timeInterval);
+    }
+  }, 1000);
+}
+
 function displayQuestionAnswer() {
   if (questionNumber === 0) {
     startContentEl.remove();
+    startTimer();
   }
   //   if (questionNumber)
   //     var questionAnswerDisplayEl = document.createElement("div");
