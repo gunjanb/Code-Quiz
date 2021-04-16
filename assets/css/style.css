@@ -11,7 +11,7 @@
 /* body as flex container */
 body {
   /* display: flex;
-    flex-direction: column; */
+  flex-direction: column; */
   background-color: var(--c--bgreen);
   line-height: 2rem;
 }
@@ -45,7 +45,6 @@ h1 {
   text-decoration: none;
   margin-right: auto;
   padding: 1%;
-  font-family: ;
 }
 
 main {
@@ -62,9 +61,10 @@ h2 {
 
 .quiz-start-content {
   display: flex;
-  justify-content: center;
+  /* justify-content: center; */
   align-items: center;
-  margin: 10rem 2rem;
+  flex-direction: column;
+  margin: 6rem 2rem;
 }
 
 .wrapper {
@@ -86,7 +86,7 @@ button,
   transition: all 0.5s ease-in-out;
   background-color: rgb(185, 182, 182);
   font-size: 1.3rem;
-  background: url(../images/horizontalline.png);
+  outline: none;
 }
 
 button:hover {
@@ -133,17 +133,24 @@ button:hover,
 }
 
 .queAnsDisplay {
-  display: flex;
-  flex: wrap;
-  justify-content: center;
+  /* display: flex;
+  flex-wrap: wrap;
+  justify-content: start;
+  flex: 0 0 80%;
+  position: relative; */
 }
 
 .question-answer-display {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  justify-content: center;
-  margin: 10rem 2rem;
+  /* justify-content: start; */
+  /* margin: 10rem 2rem; */
+  /* position: absolute;
+  top: 0;*/
+  /* flex: 0 0 80%; */
+  width: 35rem;
+  margin-top: 6rem;
 }
 /* #high-scorelist {
   display: flex;
