@@ -6,10 +6,14 @@ var timerEl = document.querySelector("#timer");
 var questionAnswerDisplayEl = document.querySelector(
   ".question-answer-display"
 );
+var showScoreEl = document.querySelector("#final-score");
 userInfoSectionEl.setAttribute("style", "display: none");
+var submitFormEl = document.querySelector("#submit-score");
+var userInitialEl = document.querySelector("#user-initial");
 var questionNumber = 0;
 var timeInterval;
 var timeLeft = 120;
+var score = 0;
 
 //questions in array of object
 var questionCollection = [
@@ -104,7 +108,14 @@ function startTimer() {
 }
 
 function gotoAlldone() {
-  // userInfoSectionEl.setAttribute("style", "display: block");
+  //dipsplay alldone
+  userInfoSectionEl.setAttribute("style", "display: block");
+  //display your score
+  //console.log(Score);
+  showScoreEl.textContent = score;
+  //clear time interval as user is done with all questions
+  clearInterval(timeInterval);
+  //get user initials and put in local strage
 }
 
 function checkUserInput() {
@@ -133,10 +144,13 @@ function checkUserInput() {
   //check user input -:option button textcontext with ans in questioncollection
   if (this.textContent === questionCollection[questionNumber].answer) {
     console.log("answer right");
+    // for right ans 10 points
+    score = score + 10;
 
     //append horizontalline and ans
     questionAnswerDisplayEl.lastChild.appendChild(horizontalLineEl);
     questionAnswerDisplayEl.lastChild.appendChild(correctEl);
+
     //questionAnswerDisplayEl.remove();
     //add logic to move to next ques
     // if last question || timer up -> display alldone section
@@ -235,6 +249,33 @@ function displayQuestionAnswer() {
   }
 }
 
+var scoreList = [];
+function saveUserInformation(event) {
+  // Prevent default action
+  event.preventDefault();
+
+  var userInitial = userInitialEl.value;
+  var userscores = score;
+  console.log(userInitial);
+  console.log(userscores);
+
+  //create an object for user name and data
+  var userData = {
+    initials: userInitial,
+    userScore: userscores,
+  };
+
+  //take the item from storage and add data to it
+  scoreList = JSON.parse(localStorage.getItem("userScores")) || [];
+  scoreList.push(userData);
+  console.log(scoreList);
+  localStorage.setItem("userScores", JSON.stringify(scoreList));
+}
+
+//add event listener on submit form
+submitFormEl.addEventListener("click", saveUserInformation);
+
+//add event listener on start button
 starQuizButtonEl.addEventListener("click", function () {
   displayQuestionAnswer();
 });
