@@ -1,6 +1,7 @@
 var starQuizButtonEl = document.querySelector("#start-quiz");
 var userInfoSectionEl = document.querySelector(".user-info");
 var startContentEl = document.querySelector(".quiz-start-content");
+// var startContentEl = document.querySelector(".wrapper");
 var timerEl = document.querySelector("#timer");
 var questionAnswerDisplayEl = document.querySelector(
   ".question-answer-display"
@@ -102,18 +103,68 @@ function startTimer() {
   }, 1000);
 }
 
+function gotoAlldone() {
+  // userInfoSectionEl.setAttribute("style", "display: block");
+}
+
 function checkUserInput() {
   // create a horizontal line
   var horizontalLineEl = document.createElement("hr");
-  //option button textcontext
+  //create wrong and right elements
+  var correctEl = document.createElement("h3");
+  var wrongEl = document.createElement("h3");
+  //put data into it
+  correctEl.textContent = "Correct";
+  wrongEl.textContent = "Wrong";
+
+  //will not append child
+  this.disabled = true;
+
+  // console.log("answer right");
+  horizontalLineEl.setAttribute(
+    "style",
+    " margin-top:1rem;border: 0;height: 3px; background: #095484; background-image: linear-gradient(to right,#8bc062, #6ca342, #8bc062);"
+  );
+
+  //check this one out horizontalLineEl.setAttribute(
+  //   "style",
+  //   "height: 50px;  background-image: url(../images/horizontalline.png);    border: none;"
+  // );
+  //check user input -:option button textcontext with ans in questioncollection
   if (this.textContent === questionCollection[questionNumber].answer) {
-    // console.log("answer right");
+    console.log("answer right");
+
+    //append horizontalline and ans
     questionAnswerDisplayEl.lastChild.appendChild(horizontalLineEl);
-    horizontalLineEl.setAttribute(
-      "style",
-      "height: 50px;  background: url(../images/horizontalline.png) no-repeat center;    border: none;"
-    );
+    questionAnswerDisplayEl.lastChild.appendChild(correctEl);
+    //questionAnswerDisplayEl.remove();
+    //add logic to move to next ques
+    // if last question || timer up -> display alldone section
+  } else {
+    console.log("in wrong ");
+    // questionNumber++;
+    questionAnswerDisplayEl.lastChild.appendChild(horizontalLineEl);
+    questionAnswerDisplayEl.lastChild.appendChild(wrongEl);
+    //wrong answer  subtract 10s time from timer
+    if (timeLeft >= 10) {
+      timeLeft = timeLeft - 10;
+      // display that time on screen
+      timerEl.textContent = timeLeft;
+    }
   }
+  // after selecting ans to be there for some time  use
+  // setTimeout;
+  setTimeout(function () {
+    console.log("inside settime");
+    questionNumber++;
+    questionAnswerDisplayEl.innerHTML = "";
+    if (questionNumber === questionCollection.length) {
+      console.log("inside settime");
+      gotoAlldone();
+    } else {
+      displayQuestionAnswer();
+    }
+  }, 1000);
 }
 
 function displayQuestionAnswer() {
@@ -126,7 +177,7 @@ function displayQuestionAnswer() {
   // start to display question
   if (questionNumber < questionCollection.length) {
     //add question
-    var questionEl = document.createElement("p");
+    var questionEl = document.createElement("h3");
     questionEl.textContent = questionCollection[questionNumber].question;
     // Create ordered list element
     var listEl = document.createElement("ul");
