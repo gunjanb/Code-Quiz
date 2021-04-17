@@ -50,14 +50,6 @@ h1 {
   padding: 1%;
 }
 
-main {
-  /* display: flex; */
-  /* flex-direction: column;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center; */
-}
-
 h2 {
   font-size: 3rem;
 }
@@ -177,10 +169,22 @@ button:hover,
   .high-score {
     font-size: 150%;
   }
+  .queAnsDisplay {
+    margin: 2rem;
+  }
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 600px) {
   .logo {
     display: none;
+  }
+}
+
+@media screen and (max-width: 460px) {
+  header {
+    flex-direction: column;
+  }
+  .high-score {
+    margin-right: 0;
   }
 }
