@@ -104,6 +104,8 @@ function startTimer() {
     timerEl.textContent = ":" + timeLeft;
 
     if (timeLeft === 0) {
+      //if  user not able to finish all que and time is up
+
       clearInterval(timeInterval);
     }
   }, 1000);
@@ -111,7 +113,7 @@ function startTimer() {
 
 function gotoAlldone() {
   //dipsplay alldone
-  userInfoSectionEl.setAttribute("style", "display: block");
+  userInfoSectionEl.setAttribute("style", "display: flex");
   //display your score
   //console.log(Score);
   showScoreEl.textContent = score;
@@ -237,7 +239,7 @@ function displayQuestionAnswer() {
     questionAnswerDisplayEl.appendChild(questionEl);
     questionAnswerDisplayEl.appendChild(listEl);
 
-    questionAnswerDisplayEl.setAttribute("style", "margin-top:5rem");
+    questionAnswerDisplayEl.setAttribute("style", "margin:auto");
     questionEl.setAttribute(
       "style",
       "font-weight:bold; font-size:1.5rem;  font-family:Arial, Helvetica, sans-serif;"
