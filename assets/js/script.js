@@ -240,7 +240,10 @@ function displayQuestionAnswer() {
     questionAnswerDisplayEl.appendChild(questionEl);
     questionAnswerDisplayEl.appendChild(listEl);
 
-    questionAnswerDisplayEl.setAttribute("style", "margin:auto");
+    questionAnswerDisplayEl.setAttribute(
+      "style",
+      "margin:auto; display: flex; flex-direction: column; flex-wrap: wrap;  width: 35rem; "
+    );
     questionEl.setAttribute(
       "style",
       "font-weight:bold; font-size:1.5rem;  font-family:Arial, Helvetica, sans-serif;"
