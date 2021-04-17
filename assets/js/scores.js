@@ -1,5 +1,6 @@
 var highScoreEl = document.querySelector("#high-scorelist");
 var clearHighScoreEl = document.querySelector(".clear-data");
+var index = 0;
 
 function displayHighScores() {
   //take data from storage
@@ -14,14 +15,17 @@ function displayHighScores() {
   //create lis for each entry and append it to //highScoreEl;
   highScoreEl.setAttribute(
     "style",
-    "background-color:white; font-size:1rem;margin-top:2rem"
+    "background-color:rgb(182, 235, 102); font-size:1rem;margin-top:2rem"
   );
   storageData.forEach(function (item) {
+    index++;
     var liList = document.createElement("li");
-    liList.textContent = item.initials + " - " + item.userScore;
+    liList.textContent = index + "." + item.initials + " - " + item.userScore;
     console.log(liList.textContent);
     highScoreEl.appendChild(liList);
   });
+
+  index = 0;
   //display it on page
 }
 
