@@ -143,23 +143,11 @@ button:hover,
   justify-content: center;
 }
 
-.question-answer-display {
+/* .question-answer-display {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  /* justify-content: start; */
-  /* margin: 10rem 2rem; */
-  /* position: absolute;
-  top: 0;*/
-  /* flex: 0 0 80%; */
   width: 35rem;
-  /* margin-top: 6rem; */
-  /* margin: auto; */
-}
-/* #high-scorelist {
-  display: flex;
-  width: 100%;
-
 } */
 
 @media screen and (max-width: 768px) {
