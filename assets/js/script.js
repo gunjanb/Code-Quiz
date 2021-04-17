@@ -10,6 +10,8 @@ var showScoreEl = document.querySelector("#final-score");
 userInfoSectionEl.setAttribute("style", "display: none");
 var submitFormEl = document.querySelector("#submit-score");
 var userInitialEl = document.querySelector("#user-initial");
+var highScoreEl = document.querySelector("#high-scorelist");
+console.log(highScoreEl);
 var questionNumber = 0;
 var timeInterval;
 var timeLeft = 120;
@@ -186,6 +188,7 @@ function displayQuestionAnswer() {
   if (questionNumber === 0) {
     startContentEl.remove();
     startTimer();
+    score = 0;
   }
 
   // start to display question
@@ -249,6 +252,27 @@ function displayQuestionAnswer() {
   }
 }
 
+// function displayHighScores() {
+//   //take data from storage
+//   var storageData = JSON.parse(localStorage.getItem("userScores")) || [];
+//   console.log(storageData);
+
+//   //sort it a. -b. () in ascending order b. -a. in descending order
+//   storageData.sort(function (a, b) {
+//     return b.userScore - a.userScore;
+//   });
+//   console.log(storageData);
+//   //create lis for each entry and append it to //highScoreEl;
+
+//   storageData.forEach(function (item) {
+//     var liList = document.createElement("li");
+//     liList.textContent = item.initials + " - " + item.userScore;
+//     console.log(liList.textContent);
+//     highScoreEl.appendChild(liList);
+//   });
+//   //display it on page
+// }
+
 var scoreList = [];
 function saveUserInformation(event) {
   // Prevent default action
@@ -258,18 +282,26 @@ function saveUserInformation(event) {
   var userscores = score;
   console.log(userInitial);
   console.log(userscores);
+  //check user initial input is empty
+  if (userInitial == "" || userInitial == null) {
+    alert("You can not have initial empty.");
+    return;
+  } else {
+    //create an object for user name and data
+    var userData = {
+      initials: userInitial,
+      userScore: userscores,
+    };
 
-  //create an object for user name and data
-  var userData = {
-    initials: userInitial,
-    userScore: userscores,
-  };
-
-  //take the item from storage and add data to it
-  scoreList = JSON.parse(localStorage.getItem("userScores")) || [];
-  scoreList.push(userData);
-  console.log(scoreList);
-  localStorage.setItem("userScores", JSON.stringify(scoreList));
+    //take the item from storage and add data to it
+    scoreList = JSON.parse(localStorage.getItem("userScores")) || [];
+    scoreList.push(userData);
+    console.log(scoreList);
+    localStorage.setItem("userScores", JSON.stringify(scoreList));
+    // displayHighScores();
+    // move to highscore page
+    window.location.href = "highscore.html";
+  }
 }
 
 //add event listener on submit form
