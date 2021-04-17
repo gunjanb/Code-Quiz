@@ -19,7 +19,19 @@ This app run in the browser and feature dynamically updated HTML and CSS powered
 
 ## Main Page
 
-![Code-Quiz](assets/images/image1.png)
+![Code-Quiz](assets/images/mainpage.png)
+
+## Question Page
+
+![Code-Quiz](assets/images/question.png)
+
+## User Info Page
+
+![Code-Quiz](assets/images/Alldone.png)
+
+## ViewHighScore Page
+
+![Code-Quiz](assets/images/scorepage.png)
 
 ## Deployed Application
 
