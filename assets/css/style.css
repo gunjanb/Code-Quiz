@@ -3,9 +3,6 @@
   --c--bgreen: #d8f3dc;
   --c--offwhite: #edf0f1;
   --c--dgreen: #6ca342;
-  --c--lgreen: #ddf5cb;
-  --c--gblack: #333333;
-  --c--yellow: #ffd82b;
 }
 
 /* body as flex container */
@@ -16,7 +13,6 @@ body {
   line-height: 2rem;
 }
 
-/* >>>>>>>>>>>>>> header >>>>>>>>>>>>>>>>>  */
 /* main header */
 header {
   display: flex;
@@ -25,7 +21,6 @@ header {
   justify-content: space-between;
   align-items: center;
   padding: 1%;
-  /* flex: 0 0 100%; */
   width: 100vw;
   margin-bottom: 5rem;
 }
@@ -34,12 +29,13 @@ h1 {
   font-size: 200%;
 }
 
-/* namelogo width and height and adding transition property to it for rotation */
+/* namelogo width and height */
 .logo {
   width: 5rem;
   height: 5rem;
 }
 
+/* for highscore in header  */
 .high-score {
   font-family: Arial, Helvetica, sans-serif;
   font-weight: bold;
@@ -54,6 +50,7 @@ h2 {
   font-size: 3rem;
 }
 
+/* quiz content section */
 .quiz-start-content {
   display: flex;
   /* justify-content: center; */
@@ -65,10 +62,9 @@ h2 {
 .wrapper {
   line-height: 2.5rem;
 }
+
+/* user info section */
 .user-info {
-  /* display: flex;
-  flex: 1 1; */
-  /* margin-top: 10rem; */
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -77,10 +73,12 @@ h2 {
   margin-right: 1rem;
 }
 
+/* form header */
 .form-h2 {
   font-size: 2rem;
 }
 
+/* for buttons */
 button,
 #submit-score,
 #start-quiz {
@@ -94,9 +92,11 @@ button,
   outline: none;
 }
 
-button:hover {
+/* button:hover {
   background-color: var(--c--dgreen);
-}
+} */
+
+/* button hover property */
 button:hover,
 .clear:hover,
 .go-back:hover,
@@ -112,6 +112,7 @@ button:hover,
   padding: 4%;
 }
 
+/* show high score */
 .show-highscore {
   margin-top: 2rem;
   display: flex;
@@ -120,11 +121,13 @@ button:hover,
   /* align-items: center; */
 }
 
+/* h1 header  */
 .high-score-h1 {
   width: 100%;
   text-align: center;
 }
 
+/* clear and go back button */
 .clear-data,
 .go-back {
   margin-right: 1rem;
@@ -137,12 +140,14 @@ button:hover,
   font-size: 1rem;
 }
 
+/* question and ans display wrapper */
 .queAnsDisplay {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
 }
 
+/* keeping for reference */
 /* .question-answer-display {
   display: flex;
   flex-direction: column;
@@ -150,6 +155,7 @@ button:hover,
   width: 35rem;
 } */
 
+/*  media queries for screen less than 768 */
 @media screen and (max-width: 768px) {
   h1 {
     font-size: 150%;
@@ -162,12 +168,14 @@ button:hover,
   }
 }
 
+/*  media queries for screen less than 600 */
 @media screen and (max-width: 600px) {
   .logo {
     display: none;
   }
 }
 
+/*  media queries for screen less than 400 */
 @media screen and (max-width: 460px) {
   header {
     flex-direction: column;

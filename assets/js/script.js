@@ -1,23 +1,28 @@
+//get handlers for start button,user info section,quiz main content section,
+// timer,que and ans display area,final score,submitscore button,user inital input,
 var starQuizButtonEl = document.querySelector("#start-quiz");
 var userInfoSectionEl = document.querySelector(".user-info");
 var startContentEl = document.querySelector(".quiz-start-content");
-// var startContentEl = document.querySelector(".wrapper");
 var timerEl = document.querySelector("#timer");
 var questionAnswerDisplayEl = document.querySelector(
   ".question-answer-display"
 );
 var showScoreEl = document.querySelector("#final-score");
-userInfoSectionEl.setAttribute("style", "display: none");
 var submitFormEl = document.querySelector("#submit-score");
 var userInitialEl = document.querySelector("#user-initial");
-var highScoreEl = document.querySelector("#high-scorelist");
-console.log(highScoreEl);
+// var highScoreEl = document.querySelector("#high-scorelist");
+//console.log(highScoreEl);
+
+//set user info section to none
+userInfoSectionEl.setAttribute("style", "display: none");
+
+//set variables
 var questionNumber = 0;
 var timeInterval;
 var timeLeft = 120;
 var score = 0;
 
-//questions in array of object
+//questions ,options and ans in array of object
 var questionCollection = [
   {
     question: "JavaScript is a ___ -side programming language.",
@@ -27,7 +32,7 @@ var questionCollection = [
   {
     question:
       "What is the HTML tag under which one can write the JavaScript code?",
-    options: ["<javascript>", "<scripted>er", "<script>", "<js>"],
+    options: ["<javascript>", "<scripted>", "<script>", "<js>"],
     answer: "<script>",
   },
   {
@@ -97,10 +102,11 @@ var questionCollection = [
   },
 ];
 
-//to set a timer for every 1sec so this function will be excuted every 1sec
+//to set a timer for every 1sec so this function will be excuted every 1sec or 1000 ms
 function startTimer() {
   timeInterval = setInterval(function () {
     timeLeft--;
+    //display timer value
     timerEl.textContent = ":" + timeLeft;
 
     if (timeLeft === 0) {
@@ -112,17 +118,19 @@ function startTimer() {
   }, 1000);
 }
 
+// functions to to be done after user is done with all ques or timer is up
 function gotoAlldone() {
-  //dipsplay alldone
+  //display alldone section
   userInfoSectionEl.setAttribute("style", "display: flex");
   //display your score
-  //console.log(Score);
   showScoreEl.textContent = score;
   //clear time interval as user is done with all questions
   clearInterval(timeInterval);
+  timerEl.textContent = "";
   //get user initials and put in local strage
 }
 
+//check user input
 function checkUserInput() {
   // create a horizontal line
   var horizontalLineEl = document.createElement("hr");
@@ -133,10 +141,11 @@ function checkUserInput() {
   correctEl.textContent = "Correct";
   wrongEl.textContent = "Wrong";
 
-  //will not append child
-  this.disabled = true;
+  //will diable  button after selection
+  // this.disabled = true;
 
   // console.log("answer right");
+  //set attributes for horizontal line added
   horizontalLineEl.setAttribute(
     "style",
     " margin-top:1rem;border: 0;height: 3px; background: #095484; background-image: linear-gradient(to right,#8bc062, #6ca342, #8bc062);"
@@ -147,6 +156,7 @@ function checkUserInput() {
   //   "height: 50px;  background-image: url(../images/horizontalline.png);    border: none;"
   // );
   //check user input -:option button textcontext with ans in questioncollection
+
   if (this.textContent === questionCollection[questionNumber].answer) {
     console.log("answer right");
     // for right ans 10 points
@@ -156,12 +166,10 @@ function checkUserInput() {
     questionAnswerDisplayEl.lastChild.appendChild(horizontalLineEl);
     questionAnswerDisplayEl.lastChild.appendChild(correctEl);
 
-    //questionAnswerDisplayEl.remove();
     //add logic to move to next ques
     // if last question || timer up -> display alldone section
   } else {
-    console.log("in wrong ");
-    // questionNumber++;
+    //console.log("in wrong ");
     questionAnswerDisplayEl.lastChild.appendChild(horizontalLineEl);
     questionAnswerDisplayEl.lastChild.appendChild(wrongEl);
     //wrong answer  subtract 10s time from timer
@@ -171,14 +179,14 @@ function checkUserInput() {
       timerEl.textContent = timeLeft;
     }
   }
-  // after selecting ans to be there for some time  use
-  // setTimeout;
+
+  // increment que no and remove inner html and if done with all que got to alldone
   setTimeout(function () {
-    console.log("inside settime");
+    // console.log("inside settime");
     questionNumber++;
     questionAnswerDisplayEl.innerHTML = "";
     if (questionNumber === questionCollection.length) {
-      console.log("inside settime");
+      // console.log("inside settime");
       gotoAlldone();
     } else {
       displayQuestionAnswer();
@@ -186,6 +194,7 @@ function checkUserInput() {
   }, 1000);
 }
 
+//will display all ques and ans
 function displayQuestionAnswer() {
   //if user has just started the quiz  then : Remove the start-content and start timer
   if (questionNumber === 0) {
@@ -220,9 +229,6 @@ function displayQuestionAnswer() {
     btnOption4El.textContent = questionCollection[questionNumber].options[3];
 
     // li1.textContent = questionCollection[questionNumber].options[0];
-    // li2.textContent = questionCollection[questionNumber].options[1];
-    // li3.textContent = questionCollection[questionNumber].options[2];
-    // li4.textContent = questionCollection[questionNumber].options[3];
 
     //adding btn to a link
     li1.appendChild(btnOption1El);
@@ -240,6 +246,7 @@ function displayQuestionAnswer() {
     questionAnswerDisplayEl.appendChild(questionEl);
     questionAnswerDisplayEl.appendChild(listEl);
 
+    //set attributes
     questionAnswerDisplayEl.setAttribute(
       "style",
       "margin:auto; display: flex; flex-direction: column; flex-wrap: wrap;  width: 35rem; "
@@ -249,12 +256,11 @@ function displayQuestionAnswer() {
       "font-weight:bold; font-size:1.5rem;  font-family:Arial, Helvetica, sans-serif;"
     );
 
+    //add event listener on option clicked
     btnOption1El.addEventListener("click", checkUserInput);
     btnOption2El.addEventListener("click", checkUserInput);
     btnOption3El.addEventListener("click", checkUserInput);
     btnOption4El.addEventListener("click", checkUserInput);
-
-    //questionNumber++;
   }
 }
 
@@ -280,14 +286,15 @@ function displayQuestionAnswer() {
 // }
 
 var scoreList = [];
+//to save user info
 function saveUserInformation(event) {
   // Prevent default action
   event.preventDefault();
 
   var userInitial = userInitialEl.value;
   var userscores = score;
-  console.log(userInitial);
-  console.log(userscores);
+  // console.log(userInitial);
+  //console.log(userscores);
   //check user initial input is empty
   if (userInitial == "" || userInitial == null) {
     alert("You can not have initial empty.");
@@ -302,9 +309,10 @@ function saveUserInformation(event) {
     //take the item from storage and add data to it
     scoreList = JSON.parse(localStorage.getItem("userScores")) || [];
     scoreList.push(userData);
-    console.log(scoreList);
+    // console.log(scoreList);
     localStorage.setItem("userScores", JSON.stringify(scoreList));
     // displayHighScores();
+
     // move to highscore page
     window.location.href = "highscore.html";
   }
