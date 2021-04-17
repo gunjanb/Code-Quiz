@@ -10,8 +10,8 @@
 
 /* body as flex container */
 body {
-  /* display: flex;
-  flex-direction: column; */
+  display: flex;
+  flex-direction: column;
   background-color: var(--c--bgreen);
   line-height: 2rem;
 }
@@ -25,6 +25,9 @@ header {
   justify-content: space-between;
   align-items: center;
   padding: 1%;
+  /* flex: 0 0 100%; */
+  width: 100vw;
+  margin-bottom: 5rem;
 }
 
 h1 {
@@ -48,11 +51,11 @@ h1 {
 }
 
 main {
-  display: flex;
-  flex-direction: column;
+  /* display: flex; */
+  /* flex-direction: column;
   flex-wrap: wrap;
   justify-content: center;
-  align-items: center;
+  align-items: center; */
 }
 
 h2 {
@@ -73,7 +76,17 @@ h2 {
 .user-info {
   /* display: flex;
   flex: 1 1; */
-  margin-top: 10rem;
+  /* margin-top: 10rem; */
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  font-size: 1.5rem;
+  margin-left: 2rem;
+  margin-right: 1rem;
+}
+
+.form-h2 {
+  font-size: 2rem;
 }
 
 button,
@@ -111,13 +124,13 @@ button:hover,
   margin-top: 2rem;
   display: flex;
   flex-wrap: wrap;
-  /* justify-content: center; */
+  justify-content: center;
   /* align-items: center; */
 }
 
 .high-score-h1 {
   width: 100%;
-  /* text-align: center; */
+  text-align: center;
 }
 
 .clear-data,
@@ -133,11 +146,9 @@ button:hover,
 }
 
 .queAnsDisplay {
-  /* display: flex;
+  display: flex;
   flex-wrap: wrap;
-  justify-content: start;
-  flex: 0 0 80%;
-  position: relative; */
+  justify-content: center;
 }
 
 .question-answer-display {
@@ -150,10 +161,26 @@ button:hover,
   top: 0;*/
   /* flex: 0 0 80%; */
   width: 35rem;
-  margin-top: 6rem;
+  /* margin-top: 6rem; */
+  /* margin: auto; */
 }
 /* #high-scorelist {
   display: flex;
   width: 100%;
 
 } */
+
+@media screen and (max-width: 768px) {
+  h1 {
+    font-size: 150%;
+  }
+  .high-score {
+    font-size: 150%;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .logo {
+    display: none;
+  }
+}
