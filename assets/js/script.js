@@ -105,7 +105,8 @@ function startTimer() {
 
     if (timeLeft === 0) {
       //if  user not able to finish all que and time is up
-
+      questionAnswerDisplayEl.remove();
+      gotoAlldone();
       clearInterval(timeInterval);
     }
   }, 1000);
