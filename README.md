@@ -19,8 +19,8 @@ This app run in the browser and feature dynamically updated HTML and CSS powered
 
 ## Main Page
 
-![Code-Quiz](./assets/images/image1)
+![Code-Quiz](assets/images/image1.png)
 
 ## Deployed Application
 
-[Code-Quiz]()
+[Code-Quiz](https://gunjanb.github.io/Code-Quiz/)
